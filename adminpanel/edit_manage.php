@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    
+
     $updateQuery = "UPDATE users SET Username='$username', Email='$email', Password='$password' WHERE Id='$id'";
     mysqli_query($con, $updateQuery);
-    
+
     header("Location: user_manage.php");
     exit();
 }
@@ -25,12 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
     <link rel="stylesheet" href="admin.css">
 </head>
+
 <body>
     <header>
         <h1>FILIPINO CUISINE ADMIN PANEL</h1>
@@ -39,7 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     <nav class="sidebar">
 
         <div class="menu">
-        <a href="adminpanel.php"><h2>ADMIN DASHBOARD</h2></a>
+            <a href="adminpanel.php">
+                <h2>ADMIN DASHBOARD</h2>
+            </a>
             <ul>
                 <li><a class="btn" href="user_manage.php">Users Management</a></li>
                 <li><a class="btn" href="adminadmin.php">Recipe Management</a></li>
@@ -50,23 +54,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     </nav>
 
     <main>
-        <section class="edit-form">
-            <h2>Edit User</h2>
+        <div class="page-header">
+            <h2 class="page-title">Edit User</h2>
+        </div>
+        <section class="form-container">
             <form method="post" action="">
                 <input type="hidden" name="id" value="<?php echo $user['Id']; ?>">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="<?php echo $user['Username']; ?>" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?php echo $user['Email']; ?>" required>
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value="<?php echo $user['Password']; ?>" required>
-                
-                <button type="submit" name="update">Update</button>
-                <a href="user_manage.php" class="btn">Back</a>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="<?php echo $user['Username']; ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="<?php echo $user['Email']; ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" value="<?php echo $user['Password']; ?>" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" name="update" class="btn-primary">Update</button>
+                    <a href="user_manage.php" class="btn btn-secondary">Back</a>
+                </div>
             </form>
         </section>
     </main>
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2024 at 05:16 AM
+-- Generation Time: Oct 01, 2026 at 09:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `recipe_website`
+-- Database: `cuisine_db`
 --
 
 -- --------------------------------------------------------
@@ -33,6 +33,13 @@ CREATE TABLE `archives` (
   `Email` varchar(200) DEFAULT NULL,
   `Password` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `archives`
+--
+
+INSERT INTO `archives` (`Id`, `Username`, `Email`, `Password`) VALUES
+(4, 'Admin', 'admin@example.com', 'admin123');
 
 -- --------------------------------------------------------
 
@@ -84,7 +91,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id`, `Username`, `Email`, `Password`) VALUES
-(4, 'Admin', 'admin@example.com', 'admin123'),
+(5, 'Admin', 'admin@example.com', 'admin123'),
 (8, 'Neil', 'neil.alferez109@example.com', '123123');
 
 --

@@ -1,20 +1,22 @@
-<?php 
-   session_start();
+<?php
+session_start();
 
-   include("php/config.php");
+include("php/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FILIPINOCUISINE</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header id="home">
         <img src="images/logo.png" alt="bowl">
-        <nav>        
+        <nav>
             <ul>
                 <li><a class="btn" href="home.php">Home</a></li>
                 <li><a class="btn" href="#about">About</a></li>
@@ -40,7 +42,7 @@
             <h2><b>ABOUT</b></h2>
         </div>
 
-        <section class="about-section" >
+        <section class="about-section">
             <div class="about-food">
                 <div class="about-description">
                     <h2>BROWSE FOR BEST FILIPINO RECIPES HERE</h2>
@@ -92,4 +94,5 @@
     </footer>
 
 </body>
+
 </html>

@@ -1,39 +1,41 @@
-<?php  
+<?php
 session_start();
 
-    include("php/config.php");
-    if(!isset($_SESSION['valid'])){
+include("php/config.php");
+if (!isset($_SESSION['valid'])) {
     header("Location: home.php");
-    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FILIPINOCUISINE</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header  id="home">
+    <header id="home">
         <img src="images/logo.png" alt="bowl">
-        <nav>        
+        <nav>
             <ul>
                 <li><a class="btn" href="home.php">Home</a></li>
                 <li><a class="btn" href="home.php">About</a></li>
                 <li><a class="btn" href="home.php">Categories</a></li>
-               
-               <?php 
-                    $id = $_SESSION['id'];
-                    $query = mysqli_query($con,"SELECT * FROM users WHERE Id=$id");
 
-                    while($result = mysqli_fetch_assoc($query)){
-                        $res_Uname = $result['Username'];
-                        $res_Email = $result['Email'];
-                        $res_id = $result['Id'];
-                    }
-                    echo "<div class='profile'>
+                <?php
+                $id = $_SESSION['id'];
+                $query = mysqli_query($con, "SELECT * FROM users WHERE Id=$id");
+
+                while ($result = mysqli_fetch_assoc($query)) {
+                    $res_Uname = $result['Username'];
+                    $res_Email = $result['Email'];
+                    $res_id = $result['Id'];
+                }
+                echo "<div class='profile'>
                         <p><b>Welcome!!  $res_Uname</b></p>
                         <li><a class='btn' href='edit.php?Id=$res_id'>Edit</a></li>
                         <li><a class='btn' id='btn' href='php/logout.php'>Logout</a></li>
@@ -44,11 +46,11 @@ session_start();
     </header>
 
     <section class="edit-page">
-                    <img src="images/home.jpg" alt="">
-            <div class="form-field">
+        <img src="images/home.jpg" alt="">
+        <div class="form-field">
 
-            <?php 
-                if (isset($_POST['submit'])) {
+            <?php
+            if (isset($_POST['submit'])) {
                 $username = $_POST['username'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
@@ -62,44 +64,45 @@ session_start();
                     <h2><b>Profile Updated!</b></h2>
                     <a href='home.php'><button class='btn'>Go Back</button></a>
                     </div>";
-                    } else {
+                } else {
                     echo "Error updating profile: " . mysqli_error($con);
                 }
-                } else {
+            } else {
 
                 $id = $_SESSION['id'];
                 $query = mysqli_query($con, "SELECT * FROM users WHERE Id=$id");
 
                 while ($result = mysqli_fetch_assoc($query)) {
-                $res_Uname = $result['Username'];
-                $res_Email = $result['Email'];
+                    $res_Uname = $result['Username'];
+                    $res_Email = $result['Email'];
                 }
             ?>
                 <form action="" method="post">
                     <div class="form">
-                    <h1>UPDATE PROFILE</h1>
+                        <h1>UPDATE PROFILE</h1>
                         <div class="form-input">
                             <label for="username">Username</label><br>
                             <input type="text" name="username" id="username" value="<?php echo $res_Uname; ?>" autocomplete="off" required>
                         </div>
-                    <div class="form-input">
+                        <div class="form-input">
                             <label for="email">Email</label><br>
                             <input type="email" name="email" id="email" value="<?php echo $res_Email; ?>" autocomplete="off" required>
                         </div>
-                    <div class="form-input">
+                        <div class="form-input">
                             <label for="password">New Password</label><br>
                             <input type="password" name="password" id="password" autocomplete="off" required>
                         </div>
-                    <div class="form-btn">
+                        <div class="form-btn">
                             <input type="submit" class="btn" name="submit" value="Update">
                         </div>
                     </div>
                 </form>
-            </div>
-        <?php } ?>
+        </div>
+    <?php } ?>
     </section>
     <footer>
         <h3>TEMP TEMP TEMP</h3>
     </footer>
 </body>
+
 </html>
